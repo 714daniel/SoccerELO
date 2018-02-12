@@ -5,7 +5,7 @@ public class Team {
 	private double rating = 2000;
 
 	public Team(String name) {
-		// TODO Auto-generated constructor stub
+		this.name = name;
 	}
 
 	public double getRating() {
@@ -36,6 +36,11 @@ public class Team {
 		double dr = 30 * (0.5 - getExpectedOutcome(a, b));
 		a.setRating(dr);
 		b.setRating(-1 * dr);
+	}
+	
+	public String toString() {
+		return name+": " + rating;
+		
 	}
 
 }
