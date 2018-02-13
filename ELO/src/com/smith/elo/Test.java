@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import org.json.*;
@@ -13,13 +14,26 @@ import org.json.*;
 public class Test {
 
 	public static void main(String[] args) {
+		Map<String, Team> teams = new HashMap<String, Team>();
+		String s = "https://www.football-data.org/v1/competitions/451/fixtures?season=2016";
+		addURLToData(s, teams);
+		s = "https://www.football-data.org/v1/competitions/451/fixtures?season=2017";
+		addURLToData(s, teams);
+		s = "https://www.football-data.org/v1/competitions/451/fixtures?season=2018";
+		addURLToData(s, teams);
+		
+		for(String name : teams.keySet()) {
+			System.out.println(teams.get(name));
+		}
+		
+	}
+	public static void addURLToData(String s, Map<String, Team> teams) {
+		JSONObject o = null;
 		URL url;
 		HttpURLConnection conn;
 		int responseCode;
-		HashMap<String, Team> teams = new HashMap<String, Team>();
-		JSONObject o = null;
 		try {
-			url = new URL("https://www.football-data.org/v1/competitions/451/fixtures");
+			url = new URL(s);
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.connect();
@@ -66,9 +80,6 @@ public class Test {
 				}
 				// System.out.println(Integer.parseInt(ji.toString()));
 				// int g2 = j.getJSONObject(i).getJSONObject("result").getInt("goalsAwayTeam");
-			}
-			for(String s : teams.keySet()) {
-				System.out.println(teams.get(s));
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
