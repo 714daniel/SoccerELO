@@ -1,0 +1,10 @@
+5000
+77 1 -333 Chelsea v Westbrom 2/12
+6 0 1025
+17  0 418
+17 0 405 Liverpool v S'hampton 2/11
+64 1 -139
+20 0 294
+19 518 Newcastle v Man U 2/11
+56 -169
+24 
